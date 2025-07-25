@@ -1,0 +1,30 @@
+1.
+    1.
+        En auktoritativ namnserver som är utpekad eller vald av domänen för att ha ip-addresen lokalt sparad så att man slipper leta upp den någon annanstans
+
+    2. 
+        Dom olika typerna av namnservrar utöver auktoritativ är rekursiv upplösare, root namnserver, TLD namnserver.
+
+    3. 
+        Det finns skillnad mellan dom. En domänn är ett logiskt namn i DNS hierarkin, medans en zon är en administrativ enhet som hanterar inställningarna inom en viss del av domännamnsrymden.
+
+    4.
+        Rekursiv slagning inebär att DNS-servern själv hittar en ip-addres till domänen, medans en iterativ hänvisar till en annan DNS-server som kan ha informationen som söks. DNS-servern vet att det är en rekursiv fråga genom att sätta en flagga i DNS-förfrågan.
+
+    5.
+        DNS delegeras i olika zoner för att göra den mer skalbar och lättare att hantera.
+        
+    6.
+        Omvänd DNS-förfrågan fungerar genom att gå igenom DNS-serverns ptr(pointer) register och hitta domänen som hör till ip-addresen.
+
+ 2.
+    1.
+        Den första raden berättar vilken version av "dig" som körs. 
+        Header delen summerar DNS-förfrågan, den berättar frågetypen, respons statusen och flaggor som till exempel rekursiv flaggan. Den listar också ut frågor, svar, auktoritativa- och ytterligare uppgifter i DNS-svaret.
+        I "Pseudosection" visas det om en förlängning på DNS är använt, den specifierar vilka flaggor som används och storleken på udp paketet.
+        I "Question" så visas domännamnet som förfrågas, att frågan är över internet och att svaret är en addres register
+        Answer visar svaren på frågorna från question, fast det finns också en Time to Live timer och ip-addresen som domänen är kopplad till
+        Längst ner visas hur snabbt svaret kom, DNS-serverns ip-addres och port, när dig kommandot kördes och storleken på DNS-serverns svar.
+
+    2.
+         
