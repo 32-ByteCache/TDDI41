@@ -22,9 +22,23 @@
         Den första raden berättar vilken version av "dig" som körs. 
         Header delen summerar DNS-förfrågan, den berättar frågetypen, respons statusen och flaggor som till exempel rekursiv flaggan. Den listar också ut frågor, svar, auktoritativa- och ytterligare uppgifter i DNS-svaret.
         I "Pseudosection" visas det om en förlängning på DNS är använt, den specifierar vilka flaggor som används och storleken på udp paketet.
-        I "Question" så visas domännamnet som förfrågas, att frågan är över internet och att svaret är en addres register
+        I "Question" så visas domännamnet som förfrågas, att frågan är över internet och att svaret är en addres record
         Answer visar svaren på frågorna från question, fast det finns också en Time to Live timer och ip-addresen som domänen är kopplad till
         Längst ner visas hur snabbt svaret kom, DNS-serverns ip-addres och port, när dig kommandot kördes och storleken på DNS-serverns svar.
 
     2.
-         
+        A-records är en Address record och tilldelar ett domännamn till en IPv4 addres, och innehåller domännamn och IP-addresen
+        AAAA-records är en Addres record som tilldelar domännamnen till en IPv6 addres, innehållersmma som A-records
+        NS-records är en Name Server record och specifierar den auktoritativa nameserver för en domän. Denna innehåller domännamnet och en kvalifierad FQDN av den namnservern
+        MX-records är en Mail Exchange record och dirigerar epost till servrar som kan ta hand om dom. Dessa innehåller domännamnet, en proritet till varje mejlserver och FQDN för mejlservern
+        SOA-records är en Start of Authority record och innehåller administrativ information om DNS-zonen. Den innehåller FQDN av den primära auktoritativanamnservern, emejladdresen till administratorn för zonen, serialnummer till zonfilen, Refresh-, Retry- och Expire intervaller och minimum TTL.
+
+3. 
+    1. Öppna /etc/resolv.conf och lägg till: nameserver "DNS-IP".
+    2. SOA står för "start of authority". 
+        MMNAME:  namnet på namnservern.
+        SERIAL:  serialnummer.
+        REFRESH: tiden (i sekunder) som sekundärservrarna ska vänta förrens de checkar med primärservern om SOA posten ska uppdateras.
+        RETRY:   tiden en server ska vänta på en icke responsiv primärservern förrens den frågar servern igen.
+        EXPIRE:  är tiden som sekundärservrarna ska vänta på svar från primärservern förrens de slutar svara på förfrågningar angående zonen.
+        
